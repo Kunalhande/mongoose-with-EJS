@@ -19,9 +19,24 @@ async function main() {
 }
 
 //New route
-app.get("/chats/new", (req, res) => {
-  res.render("new.ejs");
+app.post("/chats", async (req, res) => {
+  const { from, to, message } = req.body;
+  const newChat = new chat({
+    from,
+    To: to,
+    message,
+    created_at: new Date(),
+  });
+
+  try {
+    await newChat.save();
+    res.redirect("/chats");
+  } catch (err) {
+    console.error(err);
+    res.send("Error saving chat.");
+  }
 });
+
 
 //Index Route
 app.get("/chats", async (req, res) => {

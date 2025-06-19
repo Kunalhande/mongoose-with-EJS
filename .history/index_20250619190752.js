@@ -19,9 +19,9 @@ async function main() {
 }
 
 //New route
-app.get("/chats/new", (req, res) => {
-  res.render("new.ejs");
-});
+app.get("/chats/new", (req,res) =>{
+  res.render("new.ejs")
+})
 
 //Index Route
 app.get("/chats", async (req, res) => {
