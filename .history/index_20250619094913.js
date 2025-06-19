@@ -17,7 +17,7 @@ async function main() {
   await mongoose.connect('mongodb://127.0.0.1:27017/whatsapp');
 }
 
-let chat1 = new chat({
+let chat1 = new Chat({
   from:"hk",
   To:"rk",
   message:"hi, how are you",
