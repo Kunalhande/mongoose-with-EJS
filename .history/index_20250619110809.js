@@ -7,8 +7,7 @@ const chat = require("./models/chat");
 
 app.set("views",path.join(__dirname,"views"));
 app.set("view engine","ejs");
-app.use(express.static(path.join(__dirname, "public")))
- 
+
 main().then(() =>{
      console.log("connection successful")
 })
@@ -19,16 +18,12 @@ async function main() {
 }
 
 //Index Route
-app.get("/chats", async (req, res) => {
-  try {
-    let chats = await chat.find();
-    console.log(chats);
-    res.render("index", { chats }); // ✅ Only one response method
-  } catch (err) {
-    console.error(err);
-    res.send("Error loading chats");
-  }
-});
+app.get("/chats",async(req,res) =>{
+  let chats = await chat.find();
+  console.log(chats);
+  res.send("working");
+  res.render("index",{chats});
+})
 
 // let chat1 = new chat({
 //   from:"hk",
